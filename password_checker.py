@@ -18,37 +18,35 @@ check6 = password.count("&")
 check7 = password.count("_") 
 check8 = password.count(" ")
 final_check = check1 + check2 + check3 + check4 + check5 + check6 + check7
-    
-class main:
 
-    def length_check():
-        if length < 8:
-            return False
-        else:
-            return True
-
-    def finalize(final_check):
-        if final_check < 1:
-            return "Weak"
-        elif final_check <= 8:
-            return False
-        else:
-            return "Strong"
-
-
-    if not length_check():
-        print("Password Is Too Short")
+def length_check():
+    if length < 8:
+        return False
     else:
-        print("Password Length Is Accepted..........")
+        return True
 
-        if check8 > 0:
-            print("But, Spaces are not allowed")
+def finalize(final_check):
+    if final_check < 1:
+        return "Weak"
+    elif final_check <= 8:
+        return False
+    else:
+        return "Strong"
+
+
+if not length_check():
+    print("Password Is Too Short")
+else:
+    print("Password Length Is Accepted..........")
+
+    if check8 > 0:
+        print("But, Spaces are not allowed")
+    else:
+        strength = finalize(final_check)
+        
+        if strength == "Strong":
+            print(f"And Password Works. So, Go On with '{password}' !")
+        elif not strength:
+            print("But, Why you have added a password with <= 8 special characters. Change It")
         else:
-            strength = finalize(final_check)
-            
-            if strength == "Strong":
-                print(f"And Password Works. So, Go On with '{password}' !")
-            elif not strength:
-                print("But, Why you have added a password with <= 8 special characters. Change It")
-            else:
-                print("But, Try Again by adding more special character as Password is Weak.")
+            print("But, Try Again by adding more special character as Password is Weak.")
